@@ -1,0 +1,24 @@
+
+1创建版本库
+$git init
+2把文件放入git仓库中
+$git add readme.txt
+3把文件提交到仓库中
+$git commit -m "vesion"
+4 查看结果,仓库当前状态
+$git status
+5 查看具体修改了什么内容
+$git diff readme.txt
+6 查找历史记录,可以显示版本commit id
+$git log （--pretty=oneline）
+7 HEAD 当前版本，HEAD^上一版本，HEAD^^上上一版本，往上100个版本 HEAD~100
+8 回退到上一版本
+$git reset --hard HEAD^
+9 指定恢复到某个版本
+$git reset --hard<commit id>
+10 查看命令历史
+$git reflog
+
+
+http://www.ttmeiju.com/search.php?keyword=Game%20of%20thrones&range=1
+http://pan.baidu.com/s/1dFoaPlJ
