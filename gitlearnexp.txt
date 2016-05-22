@@ -3,3 +3,4 @@ you can do it.
 you jump,ijump.
 git tracks changes.
 creating anew branch is quick.
+creating a new branch is quick and simple.
