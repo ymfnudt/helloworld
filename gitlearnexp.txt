@@ -2,4 +2,8 @@ hello,everything will be well.Just do it
 you can do it.
 you jump,ijump.
 git tracks changes.
-creating anew branch is quick and simple.
+creating a new branch is quick and simple.
+
+
+
+
