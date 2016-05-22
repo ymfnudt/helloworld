@@ -1,0 +1,4 @@
+hello,everything will be well.Just do it
+you can do it.
+you jump,ijump.
+git tracks changes.
