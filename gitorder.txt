@@ -20,6 +20,27 @@ $git diff readme.txt
 用git diff HEAD -- readme.txt命令可以查看工作区和版本库里面最新版本的区别
 6 查找历史记录,可以显示版本commit id
 $git log （--pretty=oneline）
+
+yang@yang-PC MINGW64 /e/gitlearn (master)
+$ git log
+commit af9464a813d43d7df8a32c9dac68072f6339ef50
+Author: yang <1520241161@qq.com>
+Date:   Sun May 22 10:03:11 2016 +0800
+
+    git tracks changes
+
+commit 4965ec17b40f637f5ead004d41a175598549720f
+Author: yang <1520241161@qq.com>
+Date:   Sun May 22 09:57:54 2016 +0800
+
+    add new file gitlearnexp.txt
+
+commit 6d1fefa8ef676cec0baf1fe843181f483a373fb9
+Author: yang <1520241161@qq.com>
+Date:   Sun May 22 09:51:11 2016 +0800
+
+    new files
+
 7 HEAD 当前版本，HEAD^上一版本，HEAD^^上上一版本，往上100个版本 HEAD~100
 8 回退到上一版本
 $git reset --hard HEAD^
@@ -118,31 +139,30 @@ To git@github.com:ymfnudt/helloworld.git
    09aa89b..c73a7a7  master -> master
 Branch master set up to track remote branch master from origin.
 
+15 本地更新文件 ，之后提交到远程库
 yang@yang-PC MINGW64 /e/gitlearn (master)
-$
-
-
-
+$ git add gitorder.txt
 
 yang@yang-PC MINGW64 /e/gitlearn (master)
-$ git log
-commit af9464a813d43d7df8a32c9dac68072f6339ef50
-Author: yang <1520241161@qq.com>
-Date:   Sun May 22 10:03:11 2016 +0800
+$ git commit -m "update gitorder.txt"
+[master 201a080] update gitorder.txt
+ 1 file changed, 126 insertions(+)
 
-    git tracks changes
+yang@yang-PC MINGW64 /e/gitlearn (master)
+$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 2.36 KiB | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+To git@github.com:ymfnudt/helloworld.git
+   c73a7a7..201a080  master -> master
 
-commit 4965ec17b40f637f5ead004d41a175598549720f
-Author: yang <1520241161@qq.com>
-Date:   Sun May 22 09:57:54 2016 +0800
 
-    add new file gitlearnexp.txt
 
-commit 6d1fefa8ef676cec0baf1fe843181f483a373fb9
-Author: yang <1520241161@qq.com>
-Date:   Sun May 22 09:51:11 2016 +0800
 
-    new files
+
+
 
 
 
