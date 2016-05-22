@@ -1,3 +1,11 @@
+一、安装git
+Linux下：sudo apt-get install git
+windows下：msysgit是Windows版的Git，从https://git-for-windows.github.io下载
+
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+二、基本操作
 
 1创建版本库
 $git init
@@ -9,6 +17,7 @@ $git commit -m "vesion"
 $git status
 5 查看具体修改了什么内容
 $git diff readme.txt
+用git diff HEAD -- readme.txt命令可以查看工作区和版本库里面最新版本的区别
 6 查找历史记录,可以显示版本commit id
 $git log （--pretty=oneline）
 7 HEAD 当前版本，HEAD^上一版本，HEAD^^上上一版本，往上100个版本 HEAD~100
@@ -18,6 +27,123 @@ $git reset --hard HEAD^
 $git reset --hard<commit id>
 10 查看命令历史
 $git reflog
+
+11 撤回修改
+命令git checkout -- readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
+
+一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+
+一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+
+总之，就是让这个文件回到最近一次git commit或git add时的状态。
+
+用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区
+
+12 删除文件
+ 要从版本库中删除该文件，那就用命令git rm <file> 删掉，并且git commit
+另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：
+
+$ git reset HEAD test.txt
+$ git checkout -- test.txt
+
+13 创建SSH Key：
+
+$ ssh-keygen -t rsa -C "youremail@example.com"
+
+
+14 创建远程仓库 github
+
+
+yang@yang-PC MINGW64 /e/gitlearn (master)
+$ git remote add origin git@github.com:ymfnudt/helloworld.git
+
+yang@yang-PC MINGW64 /e/gitlearn (master)
+$ git push -u origin master
+To git@github.com:ymfnudt/helloworl.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:ymfnudt/helloworl.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+yang@yang-PC MINGW64 /e/gitlearn (master)
+$ git fetch
+Warning: Permanently added the RSA host key for IP address '192.30.252.129' to the list of known hosts.
+warning: no common commits
+remote: Counting objects: 14, done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 14 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (14/14), done.
+From github.com:ymfnudt/helloworld
+ * [new branch]      master     -> origin/master
+ * [new branch]      new-branche -> origin/new-branche
+
+yang@yang-PC MINGW64 /e/gitlearn (master)
+$ git push -u origin master
+Warning: Permanently added the RSA host key for IP address '192.30.252.131' to the list of known hosts.
+To git@github.com:ymfnudt/helloworld.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'git@github.com:ymfnudt/helloworld.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+yang@yang-PC MINGW64 /e/gitlearn (master)
+$ git pull origin master
+remote: Counting objects: 6, done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 6 (delta 3), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), done.
+From github.com:ymfnudt/helloworld
+ * branch            master     -> FETCH_HEAD
+   9811aa7..09aa89b  master     -> origin/master
+Merge made by the 'recursive' strategy.
+ README.md   | 1 +
+ helloword.c | 9 +++++++++
+ 2 files changed, 10 insertions(+)
+ create mode 100644 README.md
+ create mode 100644 helloword.c
+
+yang@yang-PC MINGW64 /e/gitlearn (master)
+$ git push -u origin master
+Counting objects: 12, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (12/12), 2.08 KiB | 0 bytes/s, done.
+Total 12 (delta 3), reused 0 (delta 0)
+To git@github.com:ymfnudt/helloworld.git
+   09aa89b..c73a7a7  master -> master
+Branch master set up to track remote branch master from origin.
+
+yang@yang-PC MINGW64 /e/gitlearn (master)
+$
+
+
+
+
+yang@yang-PC MINGW64 /e/gitlearn (master)
+$ git log
+commit af9464a813d43d7df8a32c9dac68072f6339ef50
+Author: yang <1520241161@qq.com>
+Date:   Sun May 22 10:03:11 2016 +0800
+
+    git tracks changes
+
+commit 4965ec17b40f637f5ead004d41a175598549720f
+Author: yang <1520241161@qq.com>
+Date:   Sun May 22 09:57:54 2016 +0800
+
+    add new file gitlearnexp.txt
+
+commit 6d1fefa8ef676cec0baf1fe843181f483a373fb9
+Author: yang <1520241161@qq.com>
+Date:   Sun May 22 09:51:11 2016 +0800
+
+    new files
+
 
 
 http://www.ttmeiju.com/search.php?keyword=Game%20of%20thrones&range=1
